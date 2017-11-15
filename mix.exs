@@ -36,6 +36,6 @@ defmodule DemoDeploy.Mixfile do
     IO.puts ">>> pre_release: #{pre_release}"
 
     vsn = "0.1.0"
-    "#{vsn}-#{pre_release}"
+    "#{vsn}+#{pre_release}"
   end
 end
