@@ -4,7 +4,8 @@ defmodule DemoDeploy.Mixfile do
   def project do
     [
       app: :demo_deploy,
-      version: "0.1.0",
+      # version: "0.1.4",
+      version: version(),
       elixir: "~> 1.5",
       start_permanent: Mix.env == :prod,
       deps: deps()
@@ -26,5 +27,13 @@ defmodule DemoDeploy.Mixfile do
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"},
     ]
+  end
+
+  defp version do
+    {cmt, _} = System.cmd("git", ["rev-parse", "HEAD"])
+    pre_release = String.slice(cmt, 1..6)
+
+    vsn = "0.1.0"
+    "#{vsn}-#{pre_release}"
   end
 end
