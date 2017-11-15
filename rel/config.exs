@@ -37,6 +37,10 @@ environment :prod do
   set include_erts: true
   set include_src: false
   set cookie: :"fXV)!l)fI<yQ%RQAYh<&=4QGiMR}xfi>`=LCW<QD]d04t*up;0?BHZ!oNmOD,bRv"
+
+  set overlays: [
+    {:template, "priv/templates/app_version.eex", "APP_VERSION"}
+  ]
 end
 
 # You may define one or more releases in this file.
