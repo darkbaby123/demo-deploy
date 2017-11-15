@@ -33,6 +33,7 @@ defmodule DemoDeploy.Mixfile do
     {cmt, _} = System.cmd("git", ["rev-parse", "HEAD"])
     pre_release = String.slice(cmt, 0..5)
     IO.puts ">>> cmt: #{cmt}"
+    IO.puts ">>> pre_release: #{pre_release}"
 
     vsn = "0.1.0"
     "#{vsn}-#{pre_release}"
