@@ -31,7 +31,8 @@ defmodule DemoDeploy.Mixfile do
 
   defp version do
     {cmt, _} = System.cmd("git", ["rev-parse", "HEAD"])
-    pre_release = String.slice(cmt, 0..6)
+    pre_release = String.slice(cmt, 0..5)
+    IO.puts ">>> cmt: #{cmt}"
 
     vsn = "0.1.0"
     "#{vsn}-#{pre_release}"
