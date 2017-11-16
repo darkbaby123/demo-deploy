@@ -50,6 +50,7 @@ end
 
 release :demo_deploy do
   set version: current_version(:demo_deploy)
+
   # set applications: [:runtime_tools]
 end
 
