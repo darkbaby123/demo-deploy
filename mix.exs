@@ -37,7 +37,7 @@ defmodule DemoDeploy.Mixfile do
     else
       IO.puts ">>> calc version"
       {cmt, _} = System.cmd("git", ["rev-parse", "HEAD"])
-      hash = String.slice(cmt, 0..5)
+      hash = String.slice(cmt, 0..6)
       IO.puts ">>> cmt: #{cmt}"
 
       vsn = "0.1.0"
