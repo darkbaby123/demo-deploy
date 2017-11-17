@@ -1,4 +1,4 @@
-defmodule DemoDeploy.A do
+defmodule DemoDeploy.B do
   def hello do
     "hello world"
   end
