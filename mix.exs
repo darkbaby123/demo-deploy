@@ -30,18 +30,20 @@ defmodule DemoDeploy.Mixfile do
   end
 
   defp version do
-    app_version = System.get_env("APP_VERSION")
-    if app_version && app_version != "" do
-      IO.puts ">>> use app_version #{app_version}"
-      app_version
-    else
-      IO.puts ">>> calc version"
-      {cmt, _} = System.cmd("git", ["rev-parse", "HEAD"])
-      hash = String.slice(cmt, 0..6)
-      IO.puts ">>> cmt: #{cmt}"
+    main_version = get_main_version()
 
-      vsn = "0.1.0"
-      "#{vsn}+#{hash}"
+    case Mix.env do
+      :staging -> main_version <> "+" <> get_build_meta()
+      _ -> main_version
     end
+  end
+
+  defp get_main_version do
+    "VERSION" |> File.read!() |> String.trim()
+  end
+
+  defp get_build_meta do
+    {cmt, _} = System.cmd("git", ["rev-parse", "HEAD"])
+    String.slice(cmt, 0..6)
   end
 end
